@@ -12,8 +12,8 @@ variable "public_subnet" {
 
 variable "instance_type" {
   description = "Instance type to use"
-  type = string
-  default = "t2.micro"
+  type        = string
+  default     = "t2.micro"
 }
 
 variable "keypair" {

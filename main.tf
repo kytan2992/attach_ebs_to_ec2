@@ -1,6 +1,6 @@
 locals {
   resource_prefix = "ky-tf"
-  ip_range_all = "0.0.0.0/0"
+  ip_range_all    = "0.0.0.0/0"
 }
 
 resource "aws_instance" "my_instance" {
@@ -18,10 +18,10 @@ resource "aws_instance" "my_instance" {
 
 resource "aws_ebs_volume" "my_volume" {
   availability_zone = aws_instance.my_instance.availability_zone
-  type              = "gp3" 
-  size              = 1  
+  type              = "gp3"
+  size              = 1
   iops              = 3000
-  throughput        = 125 
+  throughput        = 125
 
   tags = {
     Name = "${local.resource_prefix}-ebs-volume"
@@ -29,7 +29,7 @@ resource "aws_ebs_volume" "my_volume" {
 }
 
 resource "aws_volume_attachment" "my_attachment" {
-  device_name = "/dev/sdb"  
+  device_name = "/dev/sdb"
   volume_id   = aws_ebs_volume.my_volume.id
   instance_id = aws_instance.my_instance.id
 }
